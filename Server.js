@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3010;
+const port = 3010;
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -13,12 +13,10 @@ app.post('/signup', async (req, res) => {
         return res.status(400).json({ message: 'All fields are required' });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     const newUser = new User({
         username,
         email,
-        password: hashedPassword,
+        password ,
         dateOfBirth
     });
 
